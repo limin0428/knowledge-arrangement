@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../assets/css/reset.css">
+    <style>
+        /* calc + inline-block */
+        .container {
+            font-size: 0px;
+            letter-spacing: -3;
+            min-width: 300px;
+            overflow: auto;
+        }
+        .container div{
+            font-size: 12px;
+            height: 100px;
+            display: inline-block;
+            box-sizing: border-box;
+            text-align: center;
+            line-height: 100px;
+        }
+        .left,.right{
+            width: 100px;
+            border: 2px solid red;
+        }
+        .contre {
+            width: calc(100% - 200px);
+            border: 2px solid blue;
+        }
+        /* 定位 + padding */
+        .container2 {
+            height: 100px;
+            position: relative;
+        }
+        .container2 div {
+            position: absolute;
+            top: 0px;
+            display: block;
+        }
+        .container2 .left {
+            left: 0px;
+            z-index: 1;
+        }
+        .container2 .right {
+            right: 0px;
+            z-index: 1;
+        }
+        .contre2 {
+            left: 0px;
+            padding:0 100px;
+            width: 100%;
+        }
+        /* flex */
+        .container3 {
+            display: flex;
+        }
+        .container3 div{
+            display: block;
+        }
+        .contre3 {
+            flex: 1;
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left">左侧</div>
+        <div class="contre">中间</div>
+        <div class="right">右侧</div>
+    </div>
+    <div class="container container2">
+        <div class="left">左侧</div>
+        <div class="contre2">中间</div>
+        <div class="right">右侧</div>
+    </div>
+    <div class="container container3">
+        <div class="left">左侧</div>
+        <div class="contre3">中间</div>
+        <div class="right">右侧</div>
+    </div>
+</body>
+</html>

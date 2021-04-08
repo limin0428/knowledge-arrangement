@@ -6,19 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
         .box,.box2{
-            width: 100px;
             height: 100px;
-            background: red;
-            margin: 10px;
+            border: 2px solid red;
+        }
+        .box {
+            min-width: 200px;
+            margin-right: 20px;
+            float: left;
+        }
+        .box2 {
+            border-color: blue;
+            overflow: hidden;
         }
     </style>
 </head>
 <body>
-    <div class="box">
-        <p>1111111111</p>
-        <h6>2222</h6>
-    </div>
-    <div class="box2">3333</div>
+    <div class="box">left</div>
+    <div class="box2">right</div>
 </body>
 </html>

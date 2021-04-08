@@ -93,7 +93,7 @@ fill-mode | 动画结束后，元素的样式
 
 #### 浏览器渲染
 
-![webkit渲染流程](https://images2018.cnblogs.com/blog/1028513/201805/1028513-20180530154313816-1498972038.png)
+![webkit渲染流程](../../assets/images/浏览器渲染过程.jpg)
 
 渲染步骤：
 - 浏览解析html，生成DOM tree(深度优先)
@@ -142,6 +142,139 @@ fill-mode | 动画结束后，元素的样式
 > BFC：块级格式上下文，是页面上一个隔离的独立容器，容器的子元素不会影响到外面的元素，反之亦然
 
 ##### BFC特性
-- 
+- 使BFC内部浮动元素不会导出乱跑
+- 和浮动元素产生边界
 
 ##### BFC触发条件
+- 根元素和其他包含它的元素
+- 浮动元素(非float:none)
+- 绝对定位元素(position:absolute/fixed)
+- 非overflow:visible
+- display:inline-block/table-cell/table-caption/flow-root
+
+#### 单行/多行溢出省略号
+```css
+<!--单行-->
+.single-ellipsis {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis
+}
+<!--多行-->
+.mutiline-ellipsis {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    word-break: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+```
+
+#### 如何实现两边固定，中间自适应
+- 定位
+- calc(动态计算)
+- flex
+
+[code demo](../../code/demo1.html)
+
+#### 响应式布局
+- 缩放类(rem、百分比、vw/vh、scale)
+- 尺寸匹配(媒体查询)
+
+##### 缩放
+- rem：依赖于根元素html的font-size
+- 百分比：依赖于父级元素
+- vw/vh：依赖于视口大小
+- scale: 整体缩放
+    
+[postcss-pxtorem](https://www.npmjs.com/package/postcss-plugin-px2rem)
+
+##### postcss-pxtorm用法
+
+> 通用文件rem.js
+```
+function setRem() {
+    // 设计稿320px  默认大小16px; 320px = 20rem
+    // 设计稿375px  默认大小37.5px; 375px = 10rem
+    let htmlWidth = document.documentElement.clientWidth || document.body.clientWidth;
+    //得到html的Dom元素
+    let htmlDom = document.getElementsByTagName('html')[0];
+    //设置根元素字体大小
+    htmlDom.style.fontSize = htmlWidth / 20 + 'px';
+}
+// 初始化
+setRem();
+// 改变窗口大小时重新设置 rem
+window.onresize = function () {
+    setRem()
+}
+```
+
+> package.json配置
+
+```
+// npm install postcss-pxtorem
+"postcss": {
+    "plugins": {
+      "autoprefixer": {},
+      "postcss-pxtorem": {
+        "rootValue": 16,
+        "propList": ["*]
+      }
+    }
+},
+// main.js
+import './rem.js'
+```
+
+> postcss.config.js配置(文件没有自己创建)
+
+```
+// npm install postcss-pxtorem
+module.exports = {
+    plugins: {
+        'autoprefixer': {
+            browsers: ['Android >= 4.0', 'iOS >= 7']
+        },
+        'postcss-pxtorem': {
+            rootValue: 16,
+            propList: ['*']
+        }
+    }
+}
+// main.js
+import './rem.js'
+```
+
+> vue.config.js配置
+```
+// npm i amfe-flexible -S  npm i postcss-pxtorem -D
+module.exports = {
+	css: {
+		loaderOptions: {
+			postcss: {
+				plugins: [
+					require("autoprefixer")({
+						// 配置使用 autoprefixer
+						overrideBrowserslist: ["last 15 versions"]
+					}),
+					require("postcss-pxtorem")({
+						rootValue: 16, // 换算的基数
+						unitPrecision: 6, // 允许rem单位精度
+						propWhiteList: [], // 允许换算白名单(空数组表示禁用白名单，全部转换)
+						propBlackList: [], // 不允许转换名单
+						exclude: /node_modules/, // 排除文件夹
+						selectorBlackList: ["ig"], // 忽略的选择器，保留px
+						// propList: ["*"],
+					})
+				]
+			}
+		}
+	}
+};
+```
+
+> 备注：如果报错：Error: PostCSS plugin postcss-pxtorem requires PostCSS 8，切换postcss-pxtorem@5.1.1
+
+#### css预处理器
