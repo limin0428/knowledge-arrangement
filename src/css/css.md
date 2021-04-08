@@ -278,3 +278,64 @@ module.exports = {
 > 备注：如果报错：Error: PostCSS plugin postcss-pxtorem requires PostCSS 8，切换postcss-pxtorem@5.1.1
 
 #### css预处理器
+> 为css增加编程特性的拓展语言，可以使用变量、简单逻辑判断、函数等基本编程技巧
+
+##### Less(Saas)
+- 样式嵌套
+```
+.layout{
+    .header {
+        width:200px
+    }
+}
+```
+- 变量
+```
+@fontSize: 16px;
+@successColor: #aaa;
+<!--SaaS 变量 $successColor: #aaa; -->
+.success{
+    color: @successColor
+}
+```
+- mixin
+```
+<!-- less -->
+@fontSize: 16px;
+.default(@fontSize){
+    font-size: @fontSize;
+    border: 1px silod #ddd;
+    border-radius: 4px;
+}
+.nav {
+    .default(@fontSize - 2px)
+}
+<!-- saas -->
+$fontSize: 16px;
+@mixin default(@fontSize){
+    font-size: $fontSize;
+    border: 1px silod #ddd;
+    border-radius: 4px;
+}
+.nav {
+    @include default($fontSize - 2px)
+}
+```
+
+- extend
+```
+<!-- less -->
+.default {
+    font-size: 16px;
+    border: 1px silod #ddd;
+    border-radius: 4px;
+}
+.nav:extend(.default) {
+    color: #ddd
+}
+<!-- saas -->
+.nav{
+    @extend .default;
+    color: #ddd
+}
+```
