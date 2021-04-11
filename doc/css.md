@@ -93,7 +93,7 @@ fill-mode | 动画结束后，元素的样式
 
 #### 浏览器渲染
 
-![webkit渲染流程](../../assets/images/浏览器渲染过程.jpg)
+![webkit渲染流程](../assets/images/浏览器渲染过程.jpg)
 
 渲染步骤：
 - 浏览解析html，生成DOM tree(深度优先)
@@ -176,7 +176,7 @@ fill-mode | 动画结束后，元素的样式
 - calc(动态计算)
 - flex
 
-[code demo](../../code/demo1.html)
+[code demo](../code/HtmlAndCss/demo1.html)
 
 #### 响应式布局
 - 缩放类(rem、百分比、vw/vh、scale)

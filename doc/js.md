@@ -178,7 +178,7 @@ Object.prototype.toString.call(Fn) // "[object Function]"
 
 **流程图**
 
-![浏览器中Event Loop](../../assets/images/浏览器中EventLoop.jpg)
+![浏览器中Event Loop](../assets/images/浏览器中EventLoop.jpg)
 
 1. 检查Macrotack队列是否为空，非空则到2，为空则到3
 2. 执行Macrotack中的一个任务
@@ -194,7 +194,7 @@ Object.prototype.toString.call(Fn) // "[object Function]"
 
 > Macro-Tack：常见的宏任务：Timers Queue、IO Callbacks Queue、Check Queue、Close Callbacks Queue
 
-![Node运行机制](../../assets/images/Node运行机制.jpg)
+![Node运行机制](../assets/images/Node运行机制.jpg)
 
 1. V8引擎解析JS脚本
 2. 解析后的代码，调用Node API
@@ -212,7 +212,7 @@ Object.prototype.toString.call(Fn) // "[object Function]"
 
 **流程图**
 
-![libuv事件循环阶段](../../assets/images/Node中EventLoop.jpg)
+![libuv事件循环阶段](../assets/images/Node中EventLoop.jpg)
 
 1. 执行全局script的同步代码
 2. 执行Microtack微任务，先执行next tick queue中的所有任务，在执行Other Microtack Queue中的所有任务
@@ -248,12 +248,12 @@ promise.then(res => {
 })
 ```
 
-**[Promise的实现](../../code/js/promise.js)**
+**[Promise的实现](../code/js/promise.js)**
 
 #### 发布订阅
 > 发布订阅：是一种消息范式。消息的发送者(发布者)不会直接将消息传递给特定的接受者(订阅者)，而是通过消息中心对消息进行收集或者发布
 
-**[发布订阅实现](../../code/js/publishSubscribe.js)**
+**[发布订阅实现](../code/js/publishSubscribe.js)**
 
 #### 防抖/节流
 
@@ -261,10 +261,10 @@ promise.then(res => {
 
 > 节流：在设定时间内，只会触发首次
 
-**[防抖/节流的实现](../../code/js/debounce-throttling.js)**
+**[防抖/节流的实现](../code/js/debounce-throttling.js)**
 
 #### 函数柯里化
 
 > 函数柯里化：把接受多个参数的函数转变为一个单一参数的函数，并且返回接受余下参数且返回结果的新函数
 
-**[函数柯里化](../../code/js/currying.js)**
+**[函数柯里化](../code/js/currying.js)**
