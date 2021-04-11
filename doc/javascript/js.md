@@ -61,7 +61,7 @@ function Teacher (sex) {
 }
 Teacher.prototype.getName = 'Teacher'
 Teacher.prototype = new Person('teacher')
-var wu = new Teacher('女')
+var wang = new Teacher('女')
 ```
 
 - 寄生继承
@@ -77,7 +77,7 @@ function Teacher (sex) {
     this.sex = sex
 }
 Teacher.prototype.getName = 'Teacher'
-var wu = new Teacher('女')
+var wang = new Teacher('女')
 ```
 
 - 组合继承
@@ -94,7 +94,7 @@ function Teacher (sex) {
 }
 Teacher.prototype.getName = 'Teacher'
 Teacher.prototype = new Person('teacher')
-var wu = new Teacher('女')
+var wang = new Teacher('女')
 ```
 
 - class继承
@@ -249,3 +249,22 @@ promise.then(res => {
 ```
 
 **[Promise的实现](../../code/js/promise.js)**
+
+#### 发布订阅
+> 发布订阅：是一种消息范式。消息的发送者(发布者)不会直接将消息传递给特定的接受者(订阅者)，而是通过消息中心对消息进行收集或者发布
+
+**[发布订阅实现](../../code/js/publishSubscribe.js)**
+
+#### 防抖/节流
+
+> 防抖：在设定时间间隔多次触发，只会执行最后一次
+
+> 节流：在设定时间内，只会触发首次
+
+**[防抖/节流的实现](../../code/js/debounce-throttling.js)**
+
+#### 函数柯里化
+
+> 函数柯里化：把接受多个参数的函数转变为一个单一参数的函数，并且返回接受余下参数且返回结果的新函数
+
+**[函数柯里化](../../code/js/currying.js)**
