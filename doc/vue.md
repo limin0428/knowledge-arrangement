@@ -31,4 +31,73 @@
 **3.0版本缺点**
 - 兼容性不好
 
-#### 
+#### Vue的生命周期
+![生命周期](../assets/images/Vue生命周期.png)
+
+#### Vue与React区别
+相同点：
+- 都使用了Virtual DOM
+- 提供了响应式和组件化的师徒组件
+- 将注意力集中保持在核心库，其他功能交给相应的库
+
+不同点：
+- vue采用template形式，提倡html、css、js分离，react采用jsx语法
+- vue单个文件css作用域(scoped)，react是通过Css-in-js的方式(style-commponent)
+- react的生态比vue更加繁荣
+
+#### Vue组件传递
+- props 向下传递
+- attr 传递
+- provide/inject
+- $children/$parent
+- eventsBus
+- vuex
+
+#### minix和extend
+> minix：混入，他会将与vue的options进行合并，生命周期要先于组件的调用，其他同名会被组件定义的覆盖
+
+> extend：构造，构造一个Vue的子类
+
+#### 嵌套组件执行顺序
+创建挂载：beforeCreate(父) -> created(父) -> beforeMount(父) -> beforeCreate(子) -> created(子) -> beforeMount(子) -> mounted(子) -> mounte(父)
+
+更新/销毁：beforeUpdate(父) -> beforeUpdate(子) -> updated(子) -> updated(父)
+
+#### Vuex
+> 状态管理[用法](https://github.com/limin0428/vue-applet-skeleton/tree/master/src/store)
+- store: 仓库
+- mutations: 修改(同步)
+- commit: 提交mutations
+- actions: 修改(异步)
+- dispath: 提交actions
+- getters: 映射性取值
+
+#### EventBus的实现
+> 利用发布订阅模式
+```js
+class Bus {
+  constructor () {
+    this.callbacks = {}
+  }
+  $on(name,fn) {
+    this.callbacks[name] = this.callbacks[name] || []
+    this.callbacks[name].push(fn)
+  }
+  $emit(name,args) {
+    if(this.callbacks[name]){
+       //存在遍历所有callback
+       this.callbacks[name].forEach(cb => cb(args))
+    }
+  }
+}
+```
+
+#### VueRouter
+> mode: 模式 history模式、hash模式
+- history模式: 监听popstate
+- hash模式: 监听hashchange
+
+##### 路由钩子
+- 全局钩子
+- 路由专属钩子
+- 组件内钩子
