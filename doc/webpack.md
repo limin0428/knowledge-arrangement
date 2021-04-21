@@ -13,7 +13,7 @@
 - 配置项繁多(核心思想:运用配置)
 - 不同的插件可能会有自己的拓展字段(相比较webpack配置的plugins)
 - 学习成本比较高，需要明白各插件的配置规则和配合方式
-**1.1.3 [实例](../packTools/grunt_demo/README.md)**
+**1.1.3 [实例](../packTools/grunt_demo)**
 
 ### 1.2 [gulp](https://www.gulpjs.com.cn/)
 - 用自动化构建工具增强你的工作流程。gulp 将开发流程中让人痛苦或耗时的任务自动化，从而减少你所浪费的时间、创造更大价值。
@@ -32,7 +32,7 @@
 - 工作流程顺序难以精细控制
 - 不太适合单页或者自定义模块的开发
 
-**1.2.3 [实例](../packTools/gulp_demo/README.md)**
+**1.2.3 [实例](../packTools/gulp_demo)**
 
 ### 1.3 [webpack](https://webpack.docschina.org/concepts/)
 - webpack 是一个用于现代JavaScript应用程序的静态模块打包工具。当webpack处理应用程序时，它会在内部构建一个依赖图(dependency graph)，此依赖图对应映射到项目所需的每个模块，并生成一个或多个bundle
@@ -47,7 +47,7 @@
 - 学习成本高，配置复杂
 - 通过babel编译后的js代码打包后体积过大
 
-**1.3.3 [实例](../packTools/webpack_demo/README.md)**
+**1.3.3 [实例](../packTools/webpack_demo)**
 
 ### 1.4 [rollup](https://www.rollupjs.com/)
 - Rollup是一个JavaScript模块打包器，可以将小块代码编译成大块复杂的代码
@@ -61,7 +61,7 @@
 **1.4.2 缺点**
 - 对代码拆分、静态资源、CommonJS模块支持不好
 
-**1.4.3 [实例](../packTools/rollup_demo/README.md)**
+**1.4.3 [实例](../packTools/rollup_demo)**
 
 ### 1.5 [parcel](https://parceljs.org/)
 - 极速零配置Web应用打包工具
@@ -76,7 +76,7 @@
 - 不支持剔除无效代码(tree-shaking)
 - 配置不灵活
 
-**1.5.3 [实例](../packTools/parcel_demo/README.md)**
+**1.5.3 [实例](../packTools/parcel_demo)**
 
 
 ## webpack第三方库引入方式
