@@ -62,7 +62,22 @@
 **1.4.2 缺点**
 - 对代码拆分、静态资源、CommonJS模块支持不好
 
-**1.4.3 [实例](../packTools/webpack_demo/README.md)**
+**1.4.3 [实例](../packTools/rollup_demo/README.md)**
+
+**1.5 [parcel](https://parceljs.org/)**
+- 极速零配置Web应用打包工具
+
+**1.5.1 优点** 
+- parcel内置了常见场景的构建方案及其依赖，无需再安装各种依赖
+- parcel能以HTML为入口，自动监测和打包资源
+- parcel默认支持模块热替换
+
+**1.5.2 缺点**
+- 不支持sourceMap
+- 不支持剔除无效代码(tree-shaking)
+- 配置不灵活
+
+**1.5.3 [实例](../packTools/parcel_demo/README.md)**
 
 
 #### webpack第三方库引入方式

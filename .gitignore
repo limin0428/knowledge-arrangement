@@ -4,6 +4,15 @@
 # 忽略所有dist目录下内容
 /**/dist/*
 
+# 忽略所有dev目录下内容
+/**/dev/*
+
+# 忽略所有prod目录下内容
+/**/prod/*
+
+# 忽略所有prod目录下内容
+/**/.cache/*
+
 # misc 
 .DS_Store
 
