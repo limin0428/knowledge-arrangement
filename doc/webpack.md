@@ -2,6 +2,72 @@
 #### webpack
 > 
 
+#### webpack与其他打包工具对比
+**1.1 [grunt](https://www.gruntjs.net/)** 
+- 一句话：自动化。对于需要反复重复的任务，例如压缩（minification）、编译、单元测试、linting等，自动化工具可以减轻你的劳动，简化你的工作。当你在 Gruntfile 文件正确配置好了任务，任务运行器就会自动帮你或你的小组完成大部分无聊的工作。
+- 最老牌的打包工具，他运用配置的思想来写打包脚本，一切皆配置
+
+**1.1.1 优点** 
+- 出现的比较早
+
+**1.1.2 缺点**
+- 配置项繁多(核心思想:运用配置)
+- 不同的插件可能会有自己的拓展字段(相比较webpack配置的plugins)
+- 学习成本比较高，需要明白各插件的配置规则和配合方式
+**1.1.3 [实例](../packTools/grunt_demo/README.md)**
+
+**1.2 [gulp](https://www.gulpjs.com.cn/)**
+- 用自动化构建工具增强你的工作流程。gulp 将开发流程中让人痛苦或耗时的任务自动化，从而减少你所浪费的时间、创造更大价值。
+- 基于nodejs的steam流打包
+- 定位是基于任务流的自动化构建工具
+- Gulp是通过task对整个开发过程进行构建
+
+**1.2.1 优点** 
+- 流式写法简单直观
+- API简单，代码量少
+- 易于学习和使用
+- 适合多页面应用开发
+
+**1.2.2 缺点**
+- 异常处理比较麻烦
+- 工作流程顺序难以精细控制
+- 不太适合单页或者自定义模块的开发
+
+**1.2.3 [实例](../packTools/gulp_demo/README.md)**
+
+**1.3 [webpack](https://webpack.docschina.org/concepts/)**
+- webpack 是一个用于现代JavaScript应用程序的静态模块打包工具。当webpack处理应用程序时，它会在内部构建一个依赖图(dependency graph)，此依赖图对应映射到项目所需的每个模块，并生成一个或多个bundle
+- 通过loader将任何形式的资源都可以视为模块。
+
+**1.3.1 优点** 
+- 可以模块化的打包任何资源
+- 适配任何模块系统
+- 适合SPA单页面应用开发
+
+**1.3.2 缺点**
+- 学习成本高，配置复杂
+- 通过babel编译后的js代码打包后体积过大
+
+**1.3.3 [实例](../packTools/webpack_demo/README.md)**
+
+**1.4 [rollup](https://www.rollupjs.com/)**
+- Rollup是一个JavaScript模块打包器，可以将小块代码编译成大块复杂的代码
+- 利用ES6模块设计，利用tree-shasking生成更简洁、更简单的代码
+- 一般而言，对于应用使用webpack，对于类库使用rollup
+- +
+
+**1.4.1 优点** 
+- 可以模块化的打包任何资源
+- 适配任何模块系统
+- 适合SPA单页面应用开发
+
+**1.4.2 缺点**
+- 学习成本高，配置复杂
+- 通过babel编译后的js代码打包后体积过大
+
+**1.4.3 [实例](../packTools/webpack_demo/README.md)**
+
+
 #### webpack第三方库引入方式
 - 直接引入 
 - 插件引入  webpack.providePlugin/ [webpack-provide-global-plugin](https://www.npmjs.com/package/webpack-provide-global-plugin)

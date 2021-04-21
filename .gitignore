@@ -1,0 +1,10 @@
+# 忽略所有node_modules目录下内容
+node_modules/*
+
+# 忽略所有dist目录下内容
+dist/*
+
+# misc 
+.DS_Store
+
+npm-debug.log*

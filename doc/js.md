@@ -125,7 +125,7 @@ class Teacher extends Person {
 - HTML标签的事件函数中，this指向windows
 - 谁调用，this指向谁
 - new 构造，指向实例
-- 显式绑定(bind、call、apply)
+- 显式绑定(bind、call、apply)[bind/call/apply的实现](../code/js/thisChange.js)
 - 箭头函数没有this，根据作用域链向上查找
 
 #### 数据类型判断
