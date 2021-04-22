@@ -79,9 +79,17 @@
 
 **[实例](../packTools/parcel_demo)**
 
+## loader和plugin
+- Loader:加载器，webpack将一切文件视为模块，但是原生webpack只能解析js文件，loader(将非js文件转化成js)的作用就是让webpack拥有了加载和解析非js文件的能力
+- plugin:插件，plugin可以扩展webpack的能力，让webpack具有更多的灵活性，在webpack运行的生命周期中会广播出许多事件，plugin可以监听这些事件，在合适的时机通过webpack的API改变输出结果
 
+## webpack工作流程
+![webpack工作流程图](/assets/images/webpack工作流程.jpg)
+- 
+
+[实例](+)
 ## webpack第三方库引入方式
-- 直接引入 
+- 直接引入  npm安装
 - 插件引入  webpack.providePlugin/ [webpack-provide-global-plugin](https://www.npmjs.com/package/webpack-provide-global-plugin)
 ```
  new webpack.providePlugin({
@@ -101,7 +109,7 @@
   },
 }
 ```
-- CDN引入 externals
+- CDN引入 + externals
 ```
 externals: {
   "_": "loadsh"

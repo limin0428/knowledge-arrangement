@@ -101,3 +101,62 @@ class Bus {
 - 全局钩子
 - 路由专属钩子
 - 组件内钩子
+
+##### 路由懒加载
+- vue的异步组件
+```js
+export default new Router({
+  routes: [
+    {
+      path: '/xxx',
+      name: 'xxx',
+      // 每一个异步组件会单独生成一个js文件
+      component: resolve => require(['路径'], resolve)
+    }
+  ]
+})
+```
+- ES6动态导入import()
+```js
+export default new Router({
+  routes: [
+    {
+      path: '/xxx',
+      name: 'xxx',
+      // webpackChunkName chunk名称 同名会合并打包成一个js文件
+      component: () => import(/* webpackChunkName: 'name' */ '路径')
+    },
+    {
+      path: '/yyy',
+      name: 'yyy',
+      // webpackChunkName chunk名称
+      component: () => import(/* webpackChunkName: 'name' */ '路径')
+    },
+  ]
+})
+```
+- webpack提供的[require.ensure](https://webpack.docschina.org/api/module-methods/)(已被import()替代)
+```js
+require.ensure(
+  // callback依赖的模块
+  dependencies: String[],
+  // 依赖加载完成后，webpack执行的回调
+  callback: function(require),
+  // webpack加载失败时执行的回调
+  errorCallback: function(error),
+  // 创建的chunk的名称，同名的会合并生成一个chunk
+  chunkName: String
+)
+```
+
+```js
+export default new Router({
+  routes: [
+    {
+      path: '/xxx',
+      name: 'xxx',
+      component: resolve => require.ensure([], (require) => resolve(require('路径'), error => {}, 'chunkName')  
+    },
+  ]
+})
+```
