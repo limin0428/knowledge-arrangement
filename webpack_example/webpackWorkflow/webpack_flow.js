@@ -12,21 +12,48 @@ class Compiler {
     }
   }
   run () {
-    // 触发run钩子函数
-    this.hooks.run.call()
     // 找到入口文件
-    let entry = path.join(this.options.context, this.options.entry)
+    let entry = path.join(this.options.context ? this.options.context: __dirname, this.options.entry)
     // 从入口文件出发，调用所有配置的loader对模块进行编译，再找出该模块依赖的模块，在递归此步骤，直到所有入口文件的依赖文件都经过loader处理
     // 1.读取模块
     let entryContent = fs.readFileSync(entry, 'utf8')
-    // 2.调用loader编译
+    // 2.调用loader编译 
     let entrySource = babelLoader(entryContent)
-    console.log(entry, entryContent)
-    // 
+    // console.log(entry, entryContent)
+    // 3.模块收集
+    // module集合 
+    let modules = [] 
     let entryModule = {
       id: entry,
       source: entrySource
     }
+    modules.push(entryModule)
+    // 4.根据入口和模块之间的关系，组装成一个包含多个模块的chunk
+    let chunk = {
+      name: 'main.js', // 输出文件名称
+      modules  // 
+    }
+    // 5.chunk收集
+    let chunks = []
+    chunks.push(chunk)
+    // 6.再把每个chunk生成单个的文件夹，加入到输出列表
+    let file = {
+      fileName: this.options.output.filename,
+      source: `function sum (a, b) {
+        return a + b
+      }`
+    }
+    // 7.输出文件内容
+    const filePath = path.join(this.options.output.path,file.fileName)
+    // 判断是否有输出文件夹
+    const dirLists = fs.readdirSync(__dirname)
+    if (!dirLists.find(item => path.resolve(__dirname, item) === this.options.output.path)) {
+      // 没有出口文件夹，创建文件夹
+      fs.mkdirSync(path.resolve(__dirname, 'dist'))
+    }
+    fs.writeFileSync(filePath, file.source, 'utf-8')
+    // 8.触发run钩子函数 利用webpack的广播机制，插件会监听到自己的事件后执行回调
+    this.hooks.run.call()
   }
 }
 
@@ -53,7 +80,7 @@ if (options.plugins && Array.isArray(options.plugins)) {
 // 4.执行对象的run方法开始编译
 compiler.run()
 
-// babel-loader 将高阶语法转化为低阶语法
+// babel-loader 将高阶语法转化为低阶语法 
 function babelLoader (source) {
   return `function sum (a, b) {
     return a + b

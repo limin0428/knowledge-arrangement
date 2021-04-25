@@ -15,9 +15,9 @@ module.exports = {
           options: {
             presets: ['@babel/preset-env']
           },
-          includes: path.resolve(__dirname, 'src'),
-          excludes: /node_modules/
-        }
+        },
+        include: path.resolve(__dirname, 'src'),
+        exclude: /node_modules/
       }
     ]
   }
