@@ -85,9 +85,18 @@
 
 ## webpack工作流程
 ![webpack工作流程图](/assets/images/webpack工作流程.jpg)
-- 
+- 1.获取webpack.config.js参数，和shell脚本上的参数
+- 2.开始编译，将获取的参数初始化Compiler对象
+- 3.加载所有配置的插件
+- 4.执行对象的run方法开始编译
 
-[实例](+)
+实例：[webpack_workflow](../webpack_example/webpackWorkflow/webpack_flow.js)
+
+## webpack常用配置
+> 借助create-react-app，解读react官方webpack配置
+
+实例：[react官方webpack配置](../webpack_example/webpack_config_demo/)
+
 ## webpack第三方库引入方式
 - 直接引入  npm安装
 - 插件引入  webpack.providePlugin/ [webpack-provide-global-plugin](https://www.npmjs.com/package/webpack-provide-global-plugin)
