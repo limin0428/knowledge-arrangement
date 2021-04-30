@@ -3,7 +3,7 @@
 ![双向绑定](../assets/images/双向绑定.jpg)
 > View的变化能实时让Model发生变化，而Model的变化也能实时更新到View
 
-> Vue采用数据劫持和发布订阅模式的方式，通过Object.defineProperty方法来劫持(监控)各属性的getter、setter，并在数据(对象)发生变动时通知订阅者，触发相应的监听函数。并且，由于是在不同的数据上触发同步，可以精确的将更变发送给绑定的师徒。而不是对所有数据都执行一次检测。
+> Vue采用数据劫持和发布订阅模式的方式，通过Object.defineProperty方法来劫持(监控)各属性的getter、setter，并在数据(对象)发生变动时通知订阅者，触发相应的监听函数。并且，由于是在不同的数据上触发同步，可以精确的将更变发送给绑定的视图。而不是对所有数据都执行一次检测。
 
 ![Vue双向绑定原理](../assets/images/Vue双向绑定实现.jpg)
 - Observer 数据监听器：负责对数据对象的所有属性进行监听(劫持)，监听到数据变化后通知订阅者
@@ -103,7 +103,7 @@ class Bus {
 - 组件内钩子
 
 ##### 路由懒加载
-- vue的异步组件
+- [vue的异步组件](https://cn.vuejs.org/v2/guide/components-dynamic-async.html#%E5%BC%82%E6%AD%A5%E7%BB%84%E4%BB%B6)
 ```js
 export default new Router({
   routes: [
@@ -116,7 +116,7 @@ export default new Router({
   ]
 })
 ```
-- ES6动态导入import()
+- ES6动态导入[import()](https://webpack.docschina.org/api/module-methods/#import)
 ```js
 export default new Router({
   routes: [
@@ -160,3 +160,6 @@ export default new Router({
   ]
 })
 ```
+
+#### Vue2.0与Vue3.0
+- Vue2.0采用flow进行编写
