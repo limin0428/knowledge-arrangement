@@ -29,19 +29,20 @@ class Compiler {
     }
     modules.push(entryModule)
     // 4.根据入口和模块之间的关系，组装成一个包含多个模块的chunk
+    const entryPath = entry.split('/')
     let chunk = {
-      name: 'main.js', // 输出文件名称
-      modules  // 
+      name: entryPath[entryPath.length - 1], // 输入文件名称
+      modules  // 单个chunk下的模块集合
     }
-    // 5.chunk收集
+    // 5.chunks收集  多chunk例如路由懒加载 创建单独的chunk，在主文件中引入<script src='router_layer.js'></script>
     let chunks = []
     chunks.push(chunk)
     // 6.再把每个chunk生成单个的文件夹，加入到输出列表
     let file = {
       fileName: this.options.output.filename,
-      source: `function sum (a, b) {
-        return a + b
-      }`
+      source: chunks.find(chunk => chunk.name === entryPath[entryPath.length - 1]).modules.reduce((pre, next) => {
+        return pre + next.source
+      }, '')
     }
     // 7.输出文件内容
     const filePath = path.join(this.options.output.path,file.fileName)
@@ -49,7 +50,7 @@ class Compiler {
     const dirLists = fs.readdirSync(__dirname)
     if (!dirLists.find(item => path.resolve(__dirname, item) === this.options.output.path)) {
       // 没有出口文件夹，创建文件夹
-      fs.mkdirSync(path.resolve(__dirname, 'dist'))
+      fs.mkdirSync(this.options.output.path)
     }
     fs.writeFileSync(filePath, file.source, 'utf-8')
     // 8.触发run钩子函数 利用webpack的广播机制，插件会监听到自己的事件后执行回调
@@ -59,7 +60,6 @@ class Compiler {
 
 
 //1.获取webpack.config.js参数，和shell脚本上的参数
-
 // 拿到配置参数
 let options = require('./webpack.config.js')
 // 拿到shell参数  shell配置参数  --key1 value1 --key2 value2
@@ -80,7 +80,7 @@ if (options.plugins && Array.isArray(options.plugins)) {
 // 4.执行对象的run方法开始编译
 compiler.run()
 
-// babel-loader 将高阶语法转化为低阶语法 
+// babel-loader 将高阶语法转化为低阶语法 假设babel-loader的实现
 function babelLoader (source) {
   return `function sum (a, b) {
     return a + b
