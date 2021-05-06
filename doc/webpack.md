@@ -95,8 +95,17 @@
 ## webpack常用配置
 > 借助create-react-app，解读react官方webpack配置
 
-实例：[react官方webpack配置](../webpack_example/webpack_config_demo/)
+实例：[react官方webpack配置解析](../webpack_example/webpack_config_demo/config/webpack.config.bck.js)
 
+## webpack中的Hash值
+- Hash：跟整个项目的构建有关，只要项目中有文件改动，整个项目构建的hash值都会更改，并且全部文件都公用相同的hash值
+- chunkhash：它是根据不同的入口文件进行依赖文件解析，创建对应的chunk，生成对应的哈希值。
+- contenthash：每个生成的文件的名称都有一个唯一的hash值，该哈希值是根据该文件的内容计算得出的。
+
+#### hash的作用
+- 1、提升webpack打包速度和项目体积：将webpack入口的chunk文件中所有公共的代码提取出来，减少代码体积；同时提升webpack打包速度。
+- 2、利用缓存机制：依赖的公共模块文件一般很少更改或者不会更改，这样独立模块文件提取出可以长期缓存。
+- 3、利用浏览器缓存：方便我们在改动代码的时候，线上代码发版后及时读取最新的js文件，防止出现缓存问题。
 ## webpack第三方库引入方式
 - 直接引入  npm安装
 - 插件引入  webpack.providePlugin/ [webpack-provide-global-plugin](https://www.npmjs.com/package/webpack-provide-global-plugin)
