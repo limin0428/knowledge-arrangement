@@ -106,6 +106,9 @@
 - 1、提升webpack打包速度和项目体积：将webpack入口的chunk文件中所有公共的代码提取出来，减少代码体积；同时提升webpack打包速度。
 - 2、利用缓存机制：依赖的公共模块文件一般很少更改或者不会更改，这样独立模块文件提取出可以长期缓存。
 - 3、利用浏览器缓存：方便我们在改动代码的时候，线上代码发版后及时读取最新的js文件，防止出现缓存问题。
+
+#### [hash实例](../webpack_example/webpack_hash/webpack.config.js)
+
 ## webpack第三方库引入方式
 - 直接引入  npm安装
 - 插件引入  webpack.providePlugin/ [webpack-provide-global-plugin](https://www.npmjs.com/package/webpack-provide-global-plugin)
