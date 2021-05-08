@@ -201,6 +201,7 @@ module.exports = function (webpackEnv) {
       minimize: isEnvProduction,
       // 优化
       minimizer: [
+        // 压缩js代码
         new TerserPlugin({
             // 压缩配置
           terserOptions: {
