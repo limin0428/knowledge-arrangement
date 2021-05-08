@@ -30,10 +30,17 @@ module.exports = {
         // minimize为true  开启压缩
         minimize: true,
         minimizer: [new TerserPlugin({
+            // 匹配压缩的文件
+            test: /\.js(\?.*)?$/i,
+            // 匹配参与压缩的文件
+            // include: /\/includes/
+            // 匹配不压缩的文件
+            // exclude: /\/excludes/
             // 启用多进程并发运行并设置并发运行次数  Boolean 开启多进程  Number 最大并发运行次数
             parallel: 4,
             // 是否将打包文件中的注释单独提取到文件中
             extractComments: false,
+            // 
         }), new OptimizeCSSAssetsPlugin()],
 
     },
