@@ -2,4 +2,4 @@
 
 #### 常用命令
 
-git commit 
+git commit 1
